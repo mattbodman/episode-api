@@ -1,0 +1,11 @@
+{
+  "name": "episode-api",
+  "version": "1.0.0",
+  "description": "An NodeJS ExpressJS API which exposes the Telestream Episode Engine API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Bodman ACCTV",
+  "license": "ISC"
+}
