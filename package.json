@@ -4,7 +4,7 @@
   "description": "A NodeJS wrapper for the Telestream Episode Engine JSON API",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon --exec 'mocha *test* --recursive -R min'"
+    "test": "mocha *test* --recursive"
   },
   "author": "Matt Bodman ACCTV",
   "license": "ISC",
