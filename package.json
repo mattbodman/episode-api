@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha *test* --recursive"
   },
-  "author": "Matt Bodman ACCTV",
+  "author": "Matt Bodman",
   "license": "ISC",
   "dependencies": {
     "request": "^2.83.0",
