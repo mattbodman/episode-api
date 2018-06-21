@@ -1,0 +1,1 @@
+Wraps the Telestream Episode JSON API in a simple class.
