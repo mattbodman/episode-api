@@ -23,7 +23,7 @@ describe('episodeInstance', () => {
 
   it('should return the version of Episode', async () => {
     try {
-      let response = await ei.getVersion();
+      let response = await ei.command('getVersion');
       assert.strictEqual(response.result.API, 2);
     } catch (err) {
       throw err;
@@ -32,7 +32,7 @@ describe('episodeInstance', () => {
 
   it('should return the Bonjour status', async () => {
     try {
-      let response = await ei.statusBonjour();
+      let response = await ei.command('statusBonjour');
       assert.ok(response.result.clusters);
     } catch (err) {
       throw err;
@@ -41,7 +41,7 @@ describe('episodeInstance', () => {
 
   it('should return Node Info Cluster', async () => {
     try {
-      let response = await ei.nodeInfoCluster();
+      let response = await ei.command('nodeInfoCluster');
       assert.ok(response.result['activated-license-names']);
     } catch (err) {
       throw err;
@@ -50,7 +50,7 @@ describe('episodeInstance', () => {
 
   it('should return statusTasks2', async () => {
     try {
-      let response = await ei.statusTasks2();
+      let response = await ei.command('statusTasks2');
       assert.ok(response.result);
     } catch (err) {
       throw err;
@@ -59,9 +59,9 @@ describe('episodeInstance', () => {
 
   it('should return statusTasks2 for specific workflow', async () => {
     try {
-      let response = await ei.statusTasks2();
+      let response = await ei.command('statusTasks2');
       let workflowId = Object.keys(response.result.statuses)[0];
-      response = await ei.statusTasks2({'workflow-ids': [workflowId]});
+      response = await ei.command('statusTasks2', {'workflow-ids': [workflowId]});
       assert.ok(response.result.statuses);
     } catch (err) {
       throw err;
@@ -71,13 +71,13 @@ describe('episodeInstance', () => {
 
   it('should return subset of fields from statusTasks2', async () => {
     try {
-      let response = await ei.statusTasks2();
+      let response = await ei.command('statusTasks2');
       let workflowId = Object.keys(response.result.statuses)[0];
       let params = {
         'workflow-ids': [workflowId],
         fields: ['task.progress.fraction', 'task.message'],
       };
-      response = await ei.statusTasks2(params);
+      response = await ei.command('statusTasks2', params);
       assert.ok(response.result.statuses);
     } catch (err) {
       throw err;
@@ -86,7 +86,7 @@ describe('episodeInstance', () => {
 
   it('should return statusWorkflows2', async () => {
     try {
-      let response = await ei.statusWorkflows2();
+      let response = await ei.command('statusWorkflows2');
       assert.ok(response.result.workflows);
     } catch (err) {
       throw err;
@@ -95,7 +95,7 @@ describe('episodeInstance', () => {
 
   it('should return statusWorkflows2 that are finished only', async () => {
     try {
-      let response = await ei.statusWorkflows2({finished: true});
+      let response = await ei.command('statusWorkflows2', {finished: true});
       assert.ok(response.result.workflows);
     } catch (err) {
       throw err;
@@ -104,8 +104,17 @@ describe('episodeInstance', () => {
 
   it('should return statusWatchFolders', async () => {
     try {
-      let response = await ei.statusWatchFolders();
+      let response = await ei.command('statusWatchFolders');
       assert.ok(response.result.monitors);
+    } catch (err) {
+      throw err;
+    }
+  });
+
+  it.only('should get node info for cluster', async () => {
+    try {
+      let response = await ei.command('nodeInfoCluster');
+      assert.ok(response.result['node-id']);
     } catch (err) {
       throw err;
     }

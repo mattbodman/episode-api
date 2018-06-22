@@ -30,6 +30,10 @@ class episodeInstance {
     return this.port;
   }
 
+  command(command, params) {
+    return this._request(command, params)
+  }
+
   getVersion() {
     return this._request('getVersion');
   }
