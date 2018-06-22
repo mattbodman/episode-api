@@ -1,6 +1,6 @@
 {
   "name": "episode-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A NodeJS wrapper for the Telestream Episode Engine JSON API",
   "main": "episodeInstance.class.js",
   "scripts": {
