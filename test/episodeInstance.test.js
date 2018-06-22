@@ -1,4 +1,4 @@
-const episodeInstance = require('../episodeInstance.class');
+const episodeInstance = require('../index');
 const {assert} = require('chai');
 
 let ei;
@@ -111,7 +111,7 @@ describe('episodeInstance', () => {
     }
   });
 
-  it.only('should get node info for cluster', async () => {
+  it('should get node info for cluster', async () => {
     try {
       let response = await ei.command('nodeInfoCluster');
       assert.ok(response.result['node-id']);
